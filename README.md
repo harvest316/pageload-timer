@@ -21,15 +21,10 @@ npm test
 ```
 ```
 
-  The Test Data:
-    √ sampleRequest Should Return 10 Records
-    √ sampleResponse Should Return 7 Records
-    √ emptyResponse Should Return 0 Records
-    √ requestWithEmptyPayload Should Return Valid Fields
-    √ requestWithJustOneShow Should Return 1 Record
-    √ requestWithOnlyNonDRMShows Should Return 2 Records
-    √ requestWithOnlyZeroEpisodeShows Should Return 3 Records
-    √ requestWithOnlyValidShows Should Return 7 Records
+    The sample request provided by Mi9 contains both wanted and unwanted shows
+    The sample response provided by Mi9 contains only the wanted shows
+    Wanted shows are DRM enabled with at least one episode
+
   The Mi9 Web Service:
     √ Should Return Mi9 Sample Response Given Mi9 Sample Request
     √ Should Return Only Wanted Shows Given Only Wanted Shows
@@ -47,11 +42,18 @@ npm test
     √ Should Return 400 Parse Error Given Invalid Schema
     √ Should Return 400 Parse Error Given Invalid MIME Type
     √ Should Return 400 Parse Error Given Non-JSON Request
+    - Should Return Wanted Shows 1..4 Given Mi9 Sample Request And Skip Is 0 And Take Is 4
+    - Should Return Wanted Shows 5..7 Given Mi9 Sample Request And Skip Is 4 And Take Is 4
+  The Test Data:
+    √ sampleRequest Should Return 10 Records
+    √ sampleResponse Should Return 7 Records
+    √ emptyResponse Should Return 0 Records
+    √ requestWithEmptyPayload Should Return Valid Fields
+    √ requestWithJustOneShow Should Return 1 Record
+    √ requestWithOnlyNonDRMShows Should Return 2 Records
+    √ requestWithOnlyZeroEpisodeShows Should Return 3 Records
+    √ requestWithOnlyValidShows Should Return 7 Records
   
-    The sample request provided by Mi9 contains both wanted and unwanted shows
-    The sample response provided by Mi9 contains only the wanted shows
-    Wanted shows are DRM enabled with at least one episode
-
 ```
 
 ## Dependencies
