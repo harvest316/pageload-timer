@@ -24,7 +24,7 @@ app.use('/', routes);
  */
 app.use(function (req, res, next) {
     // return HTTP code 404 Not Found
-    res.status(404).json({error: 'Not Found'});
+    res.status(404).json({error: 'Route Not Found'});
 });
 
 /**
