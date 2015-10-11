@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>mi9-web-service <a href="https://travis-ci.org/harvest316/mi9-web-service"><img src="https://travis-ci.org/harvest316/mi9-web-service.png?branch=master" alt="Build Status"></a></h1><p>Mi9 Web Service Coding Challenge</p>
+<p>By <a href="http://paulharvey.com.au">Paul Harvey</a> (harvest316)</p>
+<h2>Installation</h2><p>Download node at <a href="http://nodejs.org">nodejs.org</a> and install it, if you haven't already.</p>
+<pre class="prettyprint source lang-sh"><code>npm install mi9-web-service --save</code></pre><h2>Tests</h2><pre class="prettyprint source lang-sh"><code>npm install
+npm test</code></pre><pre class="prettyprint source"><code>
+  The Test Data:
+    √ sampleRequest Should Return 10 Records
+    √ sampleResponse Should Return 7 Records
+    √ emptyResponse Should Return 0 Records
+    √ requestWithEmptyPayload Should Return Valid Fields
+    √ requestWithJustOneShow Should Return 1 Record
+    √ requestWithOnlyNonDRMShows Should Return 2 Records
+    √ requestWithOnlyZeroEpisodeShows Should Return 3 Records
+    √ requestWithOnlyValidShows Should Return 7 Records
+  The Mi9 Web Service:
+    √ Should Return Mi9 Sample Response Given Mi9 Sample Request
+    √ Should Return Only Wanted Shows Given Only Wanted Shows
+    √ Should Return 400 Parse Error Given Skip + Take > TotalRecords
+    √ Should Return Single Show Given Single Wanted Show
+    √ Should Return Empty Response Given Single Unwanted Show
+    √ Should Return Empty Response Given Only Zero-Episode Shows
+    √ Should Return Empty Response Given Only Non-DRM Shows
+    √ Should Return 404 Not Found Given Unknown Path
+    √ Should Return 400 Parse Error Given Missing Request
+    √ Should Return 400 Parse Error Given Null Request
+    √ Should Return 400 Parse Error Given Empty JSON Request
+    √ Should Return 400 Parse Error Given Empty String Request
+    √ Should Return 400 Parse Error Given Empty Payload
+    √ Should Return 400 Parse Error Given Invalid Schema
+    √ Should Return 400 Parse Error Given Invalid MIME Type
+    √ Should Return 400 Parse Error Given Non-JSON Request
+
+    The sample request provided by Mi9 contains both wanted and unwanted shows
+    The sample response provided by Mi9 contains only the wanted shows
+    Wanted shows are DRM enabled with at least one episode</code></pre><h2>Dependencies</h2><ul>
+<li><a href="https://github.com/caolan/async">async</a>: Higher-order functions and common patterns for asynchronous code</li>
+<li><a href="https://github.com/expressjs/body-parser">body-parser</a>@1.13.3: Node.js body parsing middleware</li>
+<li><a href="https://github.com/chaijs/chai">chai</a>@2.3: BDD/TDD assertion library for node.js and the browser. Test framework agnostic.</li>
+<li><a href="https://github.com/motdotla/dotenv">dotenv</a>: Loads environment variables from .env file</li>
+<li><a href="https://github.com/strongloop/express">express</a>: Fast, unopinionated, minimalist web framework</li>
+<li><a href="https://github.com/request/request">request</a>: Simplified HTTP request client.</li>
+<li><a href="https://github.com/jashkenas/underscore">underscore</a>: JavaScript's functional programming helper library.</li>
+<li><a href="https://github.com/flatiron/winston">winston</a>: A multi-transport async logging library for Node.js</li>
+</ul>
+<h2>Dev Dependencies</h2><ul>
+<li><a href="https://github.com/Bartvds/chai-json-schema">chai-json-schema</a>: Chai plugin for JSON Schema v4</li>
+<li><a href="https://github.com/visionmedia/debug">debug</a>: small debugging utility</li>
+<li><a href="https://github.com/LearnBoost/expect.js">expect.js</a>: BDD style assertions for node and the browser.</li>
+<li><a href="https://github.com/gruntjs/grunt">grunt</a>: The JavaScript Task Runner</li>
+<li><a href="https://github.com/gruntjs/grunt-contrib-jshint">grunt-contrib-jshint</a>: Validate files with JSHint.</li>
+<li><a href="https://github.com/yaymukund/grunt-simple-mocha">grunt-simple-mocha</a>: A simple wrapper for running tests with Mocha.</li>
+<li><a href="https://github.com/visionmedia/mocha">mocha</a>: simple, flexible, fun test framework</li>
+<li><a href="https://github.com/isaacs/use-strict">use-strict</a>: Makes all modules in Node get loaded in strict mode.</li>
+<li><a href="https://github.com/visionmedia/superagent">superagent</a>@0.21: elegant &amp; feature rich browser / node HTTP with a fluent API</li>
+</ul>
+<h2>License</h2><p>MIT</p>
+<p><em>Generated by <a href="https://github.com/zeke/package-json-to-readme">package-json-to-readme</a></em></p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#getShowsWithDRMAndEpisodes">getShowsWithDRMAndEpisodes</a></li><li><a href="global.html#isValid">isValid</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#testData">testData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Mon Oct 12 2015 02:29:23 GMT+1100 (AUS Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

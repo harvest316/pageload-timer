@@ -1,0 +1,53 @@
+{
+  "name": "mi9-web-service",
+  "description": "Mi9 Web Service Coding Challenge",
+  "version": "1.0.0",
+  "main": "/bin/www",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha --reporter spec tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/harvest316/mi9-web-service.git"
+  },
+  "keywords": [
+    "Mi9",
+    "Heroku",
+    "Mocha",
+    "Chai",
+    "JSON",
+    "BDD",
+    "ExpressJS",
+    "Grunt",
+    "Expect.js",
+    "Test",
+    "Web Service"
+  ],
+  "author": "Paul Harvey / harvest316",
+  "license": "MIT",
+  "homepage": "https://github.com/harvest316/mi9-web-service/",
+  "dependencies": {
+    "async": "^0.9.0",
+    "body-parser": "1.13.3",
+    "chai": "2.3.0",
+    "dotenv": "^1.2.0",
+    "express": "~4.8.6",
+    "request": "^2.36.0",
+    "underscore": "^1.7.0",
+    "winston": "~0.7.3"
+  },
+  "devDependencies": {
+    "chai-json-schema": "^1.1.0",
+    "debug": "~1.0.4",
+    "expect.js": "^0.3.1",
+    "grunt": "latest",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jsdoc": "^1.0.0",
+    "grunt-simple-mocha": "^0.4.0",
+    "jsdoc": "^3.3.3",
+    "mocha": "^1.21.4",
+    "superagent": "0.21.0",
+    "use-strict": "^1.0.1"
+  }
+}
