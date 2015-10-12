@@ -2,11 +2,16 @@
 'use strict';
 var logger = require('../utils/logger');
 var serverURL = 'http://localhost:' + (process.env.PORT || 80);
+var app = require('../app');
 var request = require('superagent');
 var testData = require('./data');
 var chai = require('chai');
 var expect = chai.expect;
 chai.use(require('chai-json-schema'));
+
+var server = app.listen(process.env.PORT || 80, function () {
+    logger.debug('Express server listening on port ' + server.address().port);
+});
 
 /**
  * Tests for the web service
@@ -268,4 +273,13 @@ describe('The Mi9 Web Service: ', function () {
             });
     });
 
+});
+
+/**
+ * Last-ditch Error Handler (main is in app.js)
+ */
+process.on('uncaughtException', function (err) {
+    logger.error((new Date()).toUTCString() + ' Uncaught Exception:', err.message);
+    logger.error(err.stack);
+    // let it die because it will be restarted
 });
