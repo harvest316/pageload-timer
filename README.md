@@ -78,7 +78,6 @@ npm test
 - [jsdoc](https://github.com/jsdoc3/jsdoc): An API documentation generator for JavaScript.
 - [mocha](https://github.com/visionmedia/mocha): simple, flexible, fun test framework
 - [superagent](https://github.com/visionmedia/superagent): elegant &amp; feature rich browser / node HTTP with a fluent API
-- [use-strict](https://github.com/isaacs/use-strict): Makes all modules in Node get loaded in strict mode.
 
 
 ## License

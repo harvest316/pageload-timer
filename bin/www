@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-require('use-strict');
 require('dotenv').load();
 var app = require('../app');
 var logger = require('../utils/logger');
