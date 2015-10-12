@@ -1,1 +1,0 @@
-npm install superagent@0.21 --save

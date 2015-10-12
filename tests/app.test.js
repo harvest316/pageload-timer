@@ -2,6 +2,7 @@
 'use strict';
 var logger = require('../utils/logger');
 var serverURL = 'http://localhost:' + (process.env.PORT || 80);
+//var serverURL = 'http://harvest316-mi9.herokuapp.com:' + (process.env.PORT || 80);
 var app = require('../app');
 var request = require('superagent');
 var testData = require('./data');
@@ -18,6 +19,42 @@ var server = app.listen(process.env.PORT || 80, function () {
  */
 describe('The Mi9 Web Service: ', function () {
 
+    it("Should Return 400 Parse Error Given Invalid Schema", function (done) {
+        request.post(serverURL)
+            .type('application/json')
+            .send({payloads: [], name: "invalid"})
+            .end(function (err, res) {
+                expect(res.ok).to.equal(false);
+                expect(res.status).to.equal(400);
+                expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
+                done();
+            });
+    });
+
+    it("Should Return 400 Parse Error Given Invalid MIME Type", function (done) {
+        request.post(serverURL)
+            .type('text/plain')
+            .send(testData.sampleRequest)
+            .end(function (err, res) {
+                expect(res.ok).to.equal(false);
+                expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
+                expect(res.status).to.equal(400);
+                done();
+            });
+    });
+
+    it("Should Return 400 Parse Error Given Non-JSON Request", function (done) {
+        request.post(serverURL)
+            .type('application/json')
+            .send("invalid text")
+            .end(function (err, res) {
+                expect(res.ok).to.equal(false);
+                expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
+                expect(res.status).to.equal(400);
+                done();
+            });
+    });
+
     it("Should Return Mi9 Sample Response Given Mi9 Sample Request", function (done) {
         /*
          The sample request provided by Mi9 contains both wanted and unwanted shows
@@ -28,7 +65,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(testData.sampleRequest)
             .end(function (err, res) {
-                expect(res.ok).to.be.true;
+                expect(res.ok).to.equal(true);
                 expect(res.status).to.equal(200);
                 expect(res.body.response).to.have.length(7);
                 //TODO expect('Content-Type', /json/);
@@ -46,7 +83,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(testData.requestWithOnlyValidShows())
             .end(function (err, res) {
-                expect(res.ok).to.be.true;
+                expect(res.ok).to.equal(true);
                 expect(res.status).to.equal(200);
                 expect(res.body.response).to.have.length(7);
                 var show = res.body.response[0];
@@ -69,7 +106,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(req)
             .end(function (err, res) {
-                expect(res.ok).to.be.true;
+                expect(res.ok).to.equal(true);
                 expect(res.body.response).to.have.length(4);
                 expect(res.status).to.equal(200);
                 done();
@@ -88,7 +125,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(req)
             .end(function (err, res) {
-                expect(res.ok).to.be.true;
+                expect(res.ok).to.equal(true);
                 expect(res.body.response).to.have.length(3);
                 //TODO Test for shows 5,6,7 by name
                 expect(res.status).to.equal(200);
@@ -107,7 +144,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(req)
             .end(function (err, res) {
-                expect(res.ok).to.be.false;
+                expect(res.ok).to.equal(false);
                 expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
                 expect(res.status).to.equal(400);
                 done();
@@ -119,7 +156,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(testData.requestWithJustOneShow())
             .end(function (err, res) {
-                expect(res.ok).to.be.true;
+                expect(res.ok).to.equal(true);
                 expect(res.status).to.equal(200);
                 expect(res.body.response).to.have.length(1);
                 var show = res.body.response[0];
@@ -136,7 +173,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(testData.requestWithJustOneShow())
             .end(function (err, res) {
-                expect(res.ok).to.be.true;
+                expect(res.ok).to.equal(true);
                 expect(res.status).to.equal(200);
                 expect(res.body.response).to.have.length(1);
                 var show = res.body.response[0];
@@ -153,7 +190,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(testData.requestWithOnlyZeroEpisodeShows())
             .end(function (err, res) {
-                expect(res.ok).to.be.true;
+                expect(res.ok).to.equal(true);
                 expect(res.status).to.equal(200);
                 expect(res.body).to.deep.equal(JSON.parse(testData.emptyResponse));
                 done();
@@ -165,7 +202,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(testData.requestWithOnlyNonDRMShows())
             .end(function (err, res) {
-                expect(res.ok).to.be.true;
+                expect(res.ok).to.equal(true);
                 expect(res.status).to.equal(200);
                 expect(res.body).to.deep.equal(JSON.parse(testData.emptyResponse));
                 done();
@@ -174,7 +211,7 @@ describe('The Mi9 Web Service: ', function () {
 
     it("Should Return 404 Not Found Given Unknown Path", function (done) {
         request.post(serverURL + "/invalidPath").end(function (err, res) {
-            expect(res.ok).to.be.false;
+            expect(res.ok).to.equal(false);
             expect(res.status).to.equal(404);
             done();
         });
@@ -182,7 +219,7 @@ describe('The Mi9 Web Service: ', function () {
 
     it("Should Return 400 Parse Error Given Missing Request", function (done) {
         request.post(serverURL).end(function (err, res) {
-            expect(res.ok).to.be.false;
+            expect(res.ok).to.equal(false);
             expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
             expect(res.status).to.equal(400);
             done();
@@ -194,7 +231,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(null)
             .end(function (err, res) {
-                expect(res.ok).to.be.false;
+                expect(res.ok).to.equal(false);
                 expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
                 expect(res.status).to.equal(400);
                 done();
@@ -206,7 +243,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send({})
             .end(function (err, res) {
-                expect(res.ok).to.be.false;
+                expect(res.ok).to.equal(false);
                 expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
                 expect(res.status).to.equal(400);
                 done();
@@ -218,7 +255,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send('')
             .end(function (err, res) {
-                expect(res.ok).to.be.false;
+                expect(res.ok).to.equal(false);
                 expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
                 expect(res.status).to.equal(400);
                 done();
@@ -230,43 +267,7 @@ describe('The Mi9 Web Service: ', function () {
             .type('application/json')
             .send(testData.requestWithEmptyPayload)
             .end(function (err, res) {
-                expect(res.ok).to.be.false;
-                expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
-                expect(res.status).to.equal(400);
-                done();
-            });
-    });
-
-    it("Should Return 400 Parse Error Given Invalid Schema", function (done) {
-        request.post(serverURL)
-            .type('application/json')
-            .send({payloads: [], name: "invalid"})
-            .end(function (err, res) {
-                expect(res.ok).to.be.false;
-                expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
-                expect(res.status).to.equal(400);
-                done();
-            });
-    });
-
-    it("Should Return 400 Parse Error Given Invalid MIME Type", function (done) {
-        request.post(serverURL)
-            .type('text/plain')
-            .send(testData.sampleRequest)
-            .end(function (err, res) {
-                expect(res.ok).to.be.false;
-                expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
-                expect(res.status).to.equal(400);
-                done();
-            });
-    });
-
-    it("Should Return 400 Parse Error Given Non-JSON Request", function (done) {
-        request.post(serverURL)
-            .type('application/json')
-            .send("invalid text")
-            .end(function (err, res) {
-                expect(res.ok).to.be.false;
+                expect(res.ok).to.equal(false);
                 expect(JSON.stringify(res.body)).to.equal(testData.expectedJSONParseErrorMsg);
                 expect(res.status).to.equal(400);
                 done();
@@ -275,7 +276,7 @@ describe('The Mi9 Web Service: ', function () {
 
     after(function () {
         server.close();
-        logger.debug('Express server is now closed.');
+        //logger.debug('Express server is now closed.');
     });
 });
 
