@@ -2,7 +2,6 @@
 'use strict';
 var logger = require('../utils/logger');
 var testData = require('./data');
-var constants = require('../lib/constants');
 var chai = require('chai');
 var expect = chai.expect;
 chai.use(require('chai-json-schema'));

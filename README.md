@@ -60,24 +60,25 @@ npm test
 
 - [async](https://github.com/caolan/async): Higher-order functions and common patterns for asynchronous code
 - [body-parser](https://github.com/expressjs/body-parser): Node.js body parsing middleware
-- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
-- [dotenv](https://github.com/motdotla/dotenv): Loads environment variables from .env file
 - [express](https://github.com/strongloop/express): Fast, unopinionated, minimalist web framework
-- [request](https://github.com/request/request): Simplified HTTP request client.
 - [underscore](https://github.com/jashkenas/underscore): JavaScript&#39;s functional programming helper library.
 - [winston](https://github.com/flatiron/winston): A multi-transport async logging library for Node.js
 
 ## Dev Dependencies
 
+- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
 - [chai-json-schema](https://github.com/Bartvds/chai-json-schema): Chai plugin for JSON Schema v4
 - [debug](https://github.com/visionmedia/debug): small debugging utility
+- [dotenv](https://github.com/motdotla/dotenv): Loads environment variables from .env file
 - [expect.js](https://github.com/LearnBoost/expect.js): BDD style assertions for node and the browser.
 - [grunt](https://github.com/gruntjs/grunt): The JavaScript Task Runner
 - [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint): Validate files with JSHint.
+- [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc): Integrates jsdoc3 generation into your Grunt build
 - [grunt-simple-mocha](https://github.com/yaymukund/grunt-simple-mocha): A simple wrapper for running tests with Mocha.
+- [jsdoc](https://github.com/jsdoc3/jsdoc): An API documentation generator for JavaScript.
 - [mocha](https://github.com/visionmedia/mocha): simple, flexible, fun test framework
-- [use-strict](https://github.com/isaacs/use-strict): Makes all modules in Node get loaded in strict mode.
 - [superagent](https://github.com/visionmedia/superagent): elegant &amp; feature rich browser / node HTTP with a fluent API
+- [use-strict](https://github.com/isaacs/use-strict): Makes all modules in Node get loaded in strict mode.
 
 
 ## License
