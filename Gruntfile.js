@@ -3,6 +3,16 @@
 module.exports = function (grunt) { // jshint ignore:line
 
     grunt.initConfig({
+        env: {
+            dev: {
+                NODE_ENV: 'development',
+                PORT: 80
+            },
+            build: {
+                NODE_ENV: 'production',
+                PORT: 5000
+            }
+        },
         simplemocha: {
             options: {
                 globals: ['expect'],
@@ -11,7 +21,7 @@ module.exports = function (grunt) { // jshint ignore:line
                 ui: 'bdd',
                 reporter: 'tap'
             },
-            all: {src: ['./tests/*.js']}
+            all: {src: ['./tests/*.test.js']}
         },
         jsdoc: {
             dist: {
