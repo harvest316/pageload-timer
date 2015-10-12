@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
  * Main Error Handler
  */
 app.use(function (err, req, res, next) {
-    if (err.message.indexOf("invalid json") !== -1) {
+    if (err.message.indexOf("invalid json") !== -1 || err.message.indexOf("Unexpected token") !== -1) {
         // return expected parsing error for invalid JSON
         res.status(400).json({error: constants.parseErrorMsg});
     } else {

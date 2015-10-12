@@ -13,8 +13,8 @@ module.exports = function (grunt) { // jshint ignore:line
             },
             all: {src: ['./tests/*.js']}
         },
-        jsdoc : {
-            dist : {
+        jsdoc: {
+            dist: {
                 src: ['./*.js', './bin/www', './lib/*.js', './routes/*.js', './utils/*.js', './tests/*.js', './tests/data/*.js', './README.md'],
                 jsdoc: './node_modules/.bin/jsdoc',
                 options: {

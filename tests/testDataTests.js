@@ -1,7 +1,6 @@
 /*jslint node: true */
 'use strict';
 var logger = require('../utils/logger');
-var request = require('superagent');
 var testData = require('./data');
 var constants = require('../lib/constants');
 var chai = require('chai');

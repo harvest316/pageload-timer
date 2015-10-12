@@ -59,8 +59,8 @@ npm test
 ## Dependencies
 
 - [async](https://github.com/caolan/async): Higher-order functions and common patterns for asynchronous code
-- [body-parser](https://github.com/expressjs/body-parser)@1.13.3: Node.js body parsing middleware
-- [chai](https://github.com/chaijs/chai)@2.3: BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
+- [body-parser](https://github.com/expressjs/body-parser): Node.js body parsing middleware
+- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
 - [dotenv](https://github.com/motdotla/dotenv): Loads environment variables from .env file
 - [express](https://github.com/strongloop/express): Fast, unopinionated, minimalist web framework
 - [request](https://github.com/request/request): Simplified HTTP request client.
@@ -77,7 +77,7 @@ npm test
 - [grunt-simple-mocha](https://github.com/yaymukund/grunt-simple-mocha): A simple wrapper for running tests with Mocha.
 - [mocha](https://github.com/visionmedia/mocha): simple, flexible, fun test framework
 - [use-strict](https://github.com/isaacs/use-strict): Makes all modules in Node get loaded in strict mode.
-- [superagent](https://github.com/visionmedia/superagent)@0.21: elegant &amp; feature rich browser / node HTTP with a fluent API
+- [superagent](https://github.com/visionmedia/superagent): elegant &amp; feature rich browser / node HTTP with a fluent API
 
 
 ## License
