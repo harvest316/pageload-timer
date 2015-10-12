@@ -10,7 +10,7 @@ module.exports = function (grunt) { // jshint ignore:line
             },
             build: {
                 NODE_ENV: 'production',
-                PORT: 5000
+                PORT: 80
             }
         },
         simplemocha: {
