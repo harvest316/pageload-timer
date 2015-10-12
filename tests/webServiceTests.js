@@ -1,6 +1,5 @@
 /*jslint node: true */
 'use strict';
-require('dotenv').load();
 var logger = require('../utils/logger');
 var serverURL = 'http://localhost:' + (process.env.PORT || 80);
 var request = require('superagent');
