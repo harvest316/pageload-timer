@@ -273,6 +273,10 @@ describe('The Mi9 Web Service: ', function () {
             });
     });
 
+    after(function () {
+        server.close();
+        logger.debug('Express server is now closed.');
+    });
 });
 
 /**
