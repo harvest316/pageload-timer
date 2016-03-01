@@ -24,7 +24,7 @@ if (!fs.existsSync(logDir)) {
 }
 
 /* Output everything to screen */
-transports.push(new (winston.transports.Console)({level: 'warn', colorize: true, 'timestamp': false}));
+transports.push(new (winston.transports.Console)({level: 'debug', colorize: true, 'timestamp': false}));
 
 /* Write to daily log file, using less detail in production */
 winston.add(require('winston-daily-rotate-file'), {
