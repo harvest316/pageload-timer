@@ -10,10 +10,10 @@ var transports = [];
 
 /* Define colours for error level highlighting */
 var colours = {
-    info: 'blue',
-    verbose: 'green',
     debug: 'yellow',
-    warn: 'orange',
+    verbose: 'green',
+    info: 'cyan',
+    warn: 'magenta',
     error: 'red'
 };
 winston.addColors(colours);
@@ -24,16 +24,16 @@ if (!fs.existsSync(logDir)) {
 }
 
 /* Output everything to screen */
-transports.push(new (winston.transports.Console)({level: 'debug', colorize: true, 'timestamp': true}));
+transports.push(new (winston.transports.Console)({level: 'none', colorize: true, 'timestamp': false}));
 
 /* Write to daily log file, using less detail in production */
-transports.push(new winston.transports.DailyRotateFile({
+winston.add(require('winston-daily-rotate-file'), {
     name: 'file',
     json: false,
     filename: path.join(logDir, pjson.name),
     datePattern: '.yyyy-MM-dd.txt',
     level: env === 'development' ? 'debug' : 'info'
-}));
+});
 
 var logger = new winston.Logger({transports: transports});
 module.exports = logger;

@@ -1,54 +1,61 @@
 {
-    "name": "mi9-web-service",
-    "description": "Mi9 Web Service Coding Challenge",
-    "version": "1.0.0",
-    "main": "/bin/www",
-    "scripts": {
-        "start": "node ./bin/www",
-        "test": "mocha --reporter spec tests"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/harvest316/mi9-web-service.git"
-    },
-    "keywords": [
-        "Mi9",
-        "Heroku",
-        "Mocha",
-        "Chai",
-        "JSON",
-        "BDD",
-        "ExpressJS",
-        "Grunt",
-        "Expect.js",
-        "Test",
-        "Web Service"
-    ],
-    "author": "Paul Harvey / harvest316",
-    "license": "MIT",
-    "homepage": "https://github.com/harvest316/mi9-web-service/",
-    "dependencies": {
-        "async": "^0.9.0",
-        "body-parser": "^1.14.1",
-        "express": "~4.8.6",
-        "underscore": "^1.7.0",
-        "winston": "~0.7.3"
-    },
-    "devDependencies": {
-        "chai": "^2.3.0",
-        "chai-json-schema": "^1.1.0",
-        "debug": "~1.0.4",
-        "expect.js": "^0.3.1",
-        "grunt": "latest",
-        "grunt-contrib-jshint": "^0.10.0",
-        "grunt-env": "^0.4.4",
-        "grunt-jsdoc": "^1.0.0",
-        "grunt-simple-mocha": "^0.4.0",
-        "jsdoc": "^3.3.3",
-        "mocha": "^1.21.4",
-        "superagent": "^1.4.0"
-    },
-    "engines": {
-        "node": "4.1.2"
-    }
+  "name": "pageload-timer",
+  "description": "Downloads a given list of web pages, and returns an array of their pageload latencies in milliseconds.",
+  "version": "1.0.0",
+  "main": "/bin/www",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha --reporter spec tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/harvest316/pageload-timer.git"
+  },
+  "keywords": [
+    "Pageload",
+    "Timer",
+    "Heroku",
+    "Mocha",
+    "Chai",
+    "JSON",
+    "BDD",
+    "ExpressJS",
+    "Grunt",
+    "Expect.js",
+    "Test",
+    "Web Service"
+  ],
+  "author": "Paul Harvey / harvest316",
+  "license": "MIT",
+  "homepage": "https://github.com/harvest316/pageload-timer/",
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.4",
+    "pagelt": "0.0.1",
+    "superagent": "^1.7.2",
+    "underscore": "^1.7.0",
+    "valid-url": "^1.0.9",
+    "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.0.1"
+  },
+  "devDependencies": {
+    "accepts": "^1.3.1",
+    "chai": "^3.5.0",
+    "chai-json-schema": "^1.1.0",
+    "debug": "^2.2.0",
+    "expect.js": "^0.3.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-env": "^0.4.4",
+    "grunt-exec": "^0.4.6",
+    "grunt-jsdoc": "^1.0.0",
+    "grunt-simple-mocha": "^0.4.0",
+    "jsdoc": "^3.3.3",
+    "mocha": "^2.4.5",
+    "superagent": "^1.7.2"
+  },
+  "engines": {
+    "node": "4.3.1"
+  }
 }

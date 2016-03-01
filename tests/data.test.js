@@ -2,6 +2,8 @@
 'use strict';
 var logger = require('../utils/logger');
 var testData = require('./data');
+var request = require('../lib/request');
+var response = require('../lib/response');
 var chai = require('chai');
 var expect = chai.expect;
 chai.use(require('chai-json-schema'));
@@ -11,46 +13,47 @@ chai.use(require('chai-json-schema'));
  */
 describe('The Test Data: ', function () {
 
-    it("sampleRequest Should Return 10 Records", function (done) {
-        expect(JSON.parse(testData.sampleRequest).payload).to.have.length(10);
+    it("sampleRequest Should Return 4 String Elements", function (done) {
+        var json = JSON.parse(testData.sampleRequest);
+        expect(json.payload).to.have.length(4);
+        expect(typeof json.payload[0]).to.be.string;
+        expect(typeof json.payload[1]).to.be.string;
+        expect(typeof json.payload[2]).to.be.string;
+        expect(typeof json.payload[3]).to.be.string;
+        //TODO Change to forEach
         done();
     });
 
-    it("sampleResponse Should Return 7 Records", function (done) {
-        expect(JSON.parse(testData.sampleResponse).response).to.have.length(7);
+    it("Request.isValid Should Return True Given sampleRequest", function (done) {
+        expect(request.isValid(testData.sampleRequest)).to.be.true;
         done();
     });
-    it("emptyResponse Should Return 0 Records", function (done) {
-        expect(JSON.parse(testData.emptyResponse).response).to.have.length(0);
+
+    it("Request.isValid Should Return False Given emptyRequest", function (done) {
+        expect(request.isValid(testData.emptyRequest)).to.be.false;
         done();
     });
-    it("requestWithEmptyPayload Should Return Valid Fields", function (done) {
-        expect(JSON.parse(testData.requestWithEmptyPayload)).to.have.property('payload');
-        expect(JSON.parse(testData.requestWithEmptyPayload)).to.have.property('skip');
-        expect(JSON.parse(testData.requestWithEmptyPayload)).to.have.property('take');
-        expect(JSON.parse(testData.requestWithEmptyPayload)).to.have.property('totalRecords');
-        expect(JSON.parse(testData.requestWithEmptyPayload).payload).to.have.length(0);
-        expect(JSON.parse(testData.requestWithEmptyPayload).skip).to.equal(0);
-        expect(JSON.parse(testData.requestWithEmptyPayload).take).to.equal(0);
-        expect(JSON.parse(testData.requestWithEmptyPayload).totalRecords).to.equal(0);
+
+    it("Response.isValid Should Return True Given sampleResponse", function (done) {
+        expect(response.isValid(testData.sampleResponse)).to.be.true;
         done();
     });
-    it("requestWithJustOneShow Should Return 1 Record", function (done) {
-        expect(JSON.parse(testData.requestWithJustOneShow()).payload).to.have.length(1);
+
+    it("Response.isValid Should Return False Given emptyResponse", function (done) {
+        expect(response.isValid(testData.emptyResponse)).to.be.false;
         done();
     });
-    it("requestWithOnlyNonDRMShows Should Return 2 Records", function (done) {
-        var actual = JSON.parse(testData.requestWithOnlyNonDRMShows());
-        //logger.debug(actual);
-        expect(actual.payload).to.have.length(2);
-        done();
-    });
-    it("requestWithOnlyZeroEpisodeShows Should Return 3 Records", function (done) {
-        expect(JSON.parse(testData.requestWithOnlyZeroEpisodeShows()).payload).to.have.length(3);
-        done();
-    });
-    it("requestWithOnlyValidShows Should Return 7 Records", function (done) {
-        expect(JSON.parse(testData.requestWithOnlyValidShows()).payload).to.have.length(7);
+
+    it("sampleResponse Should Contain Same URLs As sampleRequest", function (done) {
+        var req = JSON.parse(testData.sampleRequest),
+            res = JSON.parse(testData.sampleResponse);
+        expect(req.payload).to.have.length(4);
+        expect(res.response).to.have.length(4);
+        expect(res.response[0].url).to.be.oneOf(req.payload);
+        expect(res.response[1].url).to.be.oneOf(req.payload);
+        expect(res.response[2].url).to.be.oneOf(req.payload);
+        expect(res.response[3].url).to.be.oneOf(req.payload);
+        //TODO Change to forEach
         done();
     });
 

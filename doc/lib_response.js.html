@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: lib/request.js</title>
+    <title>JSDoc: Source: lib/response.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: lib/request.js</h1>
+    <h1 class="page-title">Source: lib/response.js</h1>
 
     
 
@@ -32,42 +32,47 @@ var logger = require('../utils/logger');
 var validUrl = require('valid-url');
 
 /**
- * Library functions for Requests
+ * Library functions for Responses
  */
-var request = (function () {
+var response = (function () {
     return {
 
         /**
-         * Validates the request schema
+         * Validates the response schema
          * @param jsonString
          * @returns {boolean}
          */
         isValid: function (jsonString) {
-            logger.info('Validating JSON Request: ' + jsonString);
+            logger.info('Validating JSON Response: ' + jsonString);
             var valid = true;
             try {
                 var json = JSON.parse(jsonString);
-                if (!json.hasOwnProperty("payload")) {
+                if (!json.hasOwnProperty("response")) {
                     logger.warn('Missing Payload');
                     valid = false;
-                } else if (json.payload.length &lt;= 0) {
-                    logger.warn('Empty Payload');
+                } else if (json.response.length &lt;= 0) {
+                    logger.warn('Empty Response');
                     valid = false;
                 } else {
-                    json.payload.forEach(function (url) {
-                        if (typeof url !== "string") {
+                    json.response.forEach(function (record) {
+                        if (typeof record.url !== "string") {
                             logger.warn('Not a String: ' + url);
                             valid = false;
-                        } else {
-                            if (!validUrl.isUri(url)) {
-                                logger.warn('Not a URI: ' + url);
-                                valid = false;
-                            }
+                        } else if (!validUrl.isUri(record.url)) {
+                            logger.warn('Not a URI: ' + record.url);
+                            valid = false;
+                        }
+                        if (typeof record.latency_ms !== "number") {
+                            logger.warn('Not a Number: ' + record.latency_ms);
+                            valid = false;
+                        } else if (record.latency_ms &lt;= 0) {
+                            logger.warn('Not above Zero: ' + record.latency_ms);
+                            valid = false;
                         }
                     });
                 }
             } catch (err) {
-                logger.error('Error in request.isValid: ' + err.message);
+                logger.error('Error in response.isValid: ' + err.message);
                 valid = false;
             }
             return valid;
@@ -76,7 +81,7 @@ var request = (function () {
 
 }());
 
-exports = module.exports = request;
+exports = module.exports = response;
 </code></pre>
         </article>
     </section>

@@ -1,82 +1,107 @@
-# mi9-web-service [![Build Status](https://travis-ci.org/harvest316/mi9-web-service.png?branch=master)](https://travis-ci.org/harvest316/mi9-web-service)
+# pageload-timer [![Build Status](https://travis-ci.org/harvest316/pageload-timer.png?branch=master)](https://travis-ci.org/harvest316/pageload-timer)
 
-Mi9 Web Service Coding Challenge
+Downloads a given list of web pages, and returns an array of their pageload latencies in milliseconds.
 
-By [Paul Harvey](http://paulharvey.com.au) (harvest316)
+## Sample Request
+```json
+{
+    "payload": [
+            "http://www.google.com",
+            "https://www.facebook.com:443",
+            "https://twitter.com",
+            "http://www.xkcd.com/443?foo=bar"
+    ]
+}
+```
+
+## Sample Response
+```json
+{
+    "response": [
+        {
+            "url": "http://www.google.com",
+            "latency_ms": 3210
+        },
+        {
+            "url": "https://www.facebook.com:443",
+            "latency_ms": 1232
+        },
+        {
+            "url": "https://twitter.com",
+            "latency_ms": 315
+        },
+        {
+            "url": "http://www.xkcd.com/443?foo=bar",
+            "latency_ms": 132
+        }
+    ]
+}
+```
 
 ## Installation
 
 Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
 
 ```sh
-npm install mi9-web-service --save
+npm install pageload-timer --save
 ```
 
 
 ## Tests
 
-```sh
-npm install
-npm test
 ```
-```
-
-    The sample request provided by Mi9 contains both wanted and unwanted shows
-    The sample response provided by Mi9 contains only the wanted shows
-    Wanted shows are DRM enabled with at least one episode
-
-  The Mi9 Web Service:
-    √ Should Return Mi9 Sample Response Given Mi9 Sample Request
-    √ Should Return Only Wanted Shows Given Only Wanted Shows
-    √ Should Return 400 Parse Error Given Skip + Take > TotalRecords
-    √ Should Return Single Show Given Single Wanted Show
-    √ Should Return Empty Response Given Single Unwanted Show
-    √ Should Return Empty Response Given Only Zero-Episode Shows
-    √ Should Return Empty Response Given Only Non-DRM Shows
-    √ Should Return 404 Not Found Given Unknown Path
+  The Pageload Timer Web Service: 
+    √ Should Return 4 Valid Timing Records Given Sample Request (2802ms)
+    √ Should Return Single Response Given Single Existing URL (1788ms)
+    √ Should Return 404 Not Found Given Well-Formed Non-Existing URL (387ms)
+    √ Should Return 404 Not Found Given Invalid TLD (383ms)
+    √ Should Return 400 Parse Error Given Invalid Schema
+    √ Should Return 400 Parse Error Given Invalid MIME Type
+    √ Should Return 400 Parse Error Given Non-JSON Request
+    √ Should Return 404 Not Found Given Invalid POST Path
     √ Should Return 400 Parse Error Given Missing Request
     √ Should Return 400 Parse Error Given Null Request
     √ Should Return 400 Parse Error Given Empty JSON Request
     √ Should Return 400 Parse Error Given Empty String Request
     √ Should Return 400 Parse Error Given Empty Payload
-    √ Should Return 400 Parse Error Given Invalid Schema
-    √ Should Return 400 Parse Error Given Invalid MIME Type
-    √ Should Return 400 Parse Error Given Non-JSON Request
-    - Should Return Wanted Shows 1..4 Given Mi9 Sample Request And Skip Is 0 And Take Is 4
-    - Should Return Wanted Shows 5..7 Given Mi9 Sample Request And Skip Is 4 And Take Is 4
-  The Test Data:
-    √ sampleRequest Should Return 10 Records
-    √ sampleResponse Should Return 7 Records
-    √ emptyResponse Should Return 0 Records
-    √ requestWithEmptyPayload Should Return Valid Fields
-    √ requestWithJustOneShow Should Return 1 Record
-    √ requestWithOnlyNonDRMShows Should Return 2 Records
-    √ requestWithOnlyZeroEpisodeShows Should Return 3 Records
-    √ requestWithOnlyValidShows Should Return 7 Records
-  
+  The Test Data: 
+    √ sampleRequest Should Return 4 String Elements
+    √ Request.isValid Should Return True Given sampleRequest
+    √ Request.isValid Should Return False Given emptyRequest
+    √ Response.isValid Should Return True Given sampleResponse
+    √ Response.isValid Should Return False Given emptyResponse
+    √ sampleResponse Should Contain Same URLs As sampleRequest
+  19 passing (5s)
+
 ```
 
 ## Dependencies
 
 - [async](https://github.com/caolan/async): Higher-order functions and common patterns for asynchronous code
 - [body-parser](https://github.com/expressjs/body-parser): Node.js body parsing middleware
-- [express](https://github.com/strongloop/express): Fast, unopinionated, minimalist web framework
+- [express](https://github.com/expressjs/express): Fast, unopinionated, minimalist web framework
+- [pagelt](https://github.com/zrrrzzt/pagelt): Measure time to load a page
+- [superagent](https://github.com/visionmedia/superagent): elegant &amp; feature rich browser / node HTTP with a fluent API
 - [underscore](https://github.com/jashkenas/underscore): JavaScript&#39;s functional programming helper library.
-- [winston](https://github.com/flatiron/winston): A multi-transport async logging library for Node.js
+- [valid-url](https://github.com/ogt/valid-url): URI validation functions
+- [winston](https://github.com/winstonjs/winston): A multi-transport async logging library for Node.js
+- [winston-daily-rotate-file](https://github.com/winstonjs/winston-daily-rotate-file): A transport for winston which logs to a rotating file each day.
 
 ## Dev Dependencies
 
+- [accepts](https://github.com/jshttp/accepts): Higher-level content negotiation
 - [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
 - [chai-json-schema](https://github.com/Bartvds/chai-json-schema): Chai plugin for JSON Schema v4
 - [debug](https://github.com/visionmedia/debug): small debugging utility
-- [dotenv](https://github.com/motdotla/dotenv): Loads environment variables from .env file
 - [expect.js](https://github.com/LearnBoost/expect.js): BDD style assertions for node and the browser.
 - [grunt](https://github.com/gruntjs/grunt): The JavaScript Task Runner
-- [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint): Validate files with JSHint.
+- [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint): Validate files with JSHint
+- [grunt-env](https://github.com/jsoverson/grunt-env): Specify an ENV configuration for future tasks in the chain
+- [grunt-exec](https://github.com/jharding/grunt-exec): Grunt task for executing shell commands.
 - [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc): Integrates jsdoc3 generation into your Grunt build
 - [grunt-simple-mocha](https://github.com/yaymukund/grunt-simple-mocha): A simple wrapper for running tests with Mocha.
 - [jsdoc](https://github.com/jsdoc3/jsdoc): An API documentation generator for JavaScript.
-- [mocha](https://github.com/visionmedia/mocha): simple, flexible, fun test framework
+- [mocha](https://github.com/mochajs/mocha): simple, flexible, fun test framework
 - [superagent](https://github.com/visionmedia/superagent): elegant &amp; feature rich browser / node HTTP with a fluent API
 
 

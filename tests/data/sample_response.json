@@ -1,39 +1,20 @@
 {
     "response": [
         {
-            "image": "http://catchup.ninemsn.com.au/img/jump-in/shows/16KidsandCounting1280.jpg",
-            "slug": "show/16kidsandcounting",
-            "title": "16 Kids and Counting"
+            "url": "http://www.google.com",
+            "latency_ms": 3210
         },
         {
-            "image": "http://catchup.ninemsn.com.au/img/jump-in/shows/TheTaste1280.jpg",
-            "slug": "show/thetaste",
-            "title": "The Taste"
+            "url": "https://www.facebook.com:443",
+            "latency_ms": 1232
         },
         {
-            "image": "http://catchup.ninemsn.com.au/img/jump-in/shows/Thunderbirds_1280.jpg",
-            "slug": "show/thunderbirds",
-            "title": "Thunderbirds"
+            "url": "https://twitter.com",
+            "latency_ms": 315
         },
         {
-            "image": "http://catchup.ninemsn.com.au/img/jump-in/shows/ScoobyDoo1280.jpg",
-            "slug": "show/scoobydoomysteryincorporated",
-            "title": "Scooby-Doo! Mystery Incorporated"
-        },
-        {
-            "image": "http://catchup.ninemsn.com.au/img/jump-in/shows/ToyHunter1280.jpg",
-            "slug": "show/toyhunter",
-            "title": "Toy Hunter"
-        },
-        {
-            "image": "http://catchup.ninemsn.com.au/img/jump-in/shows/Worlds1280.jpg",
-            "slug": "show/worlds",
-            "title": "World's..."
-        },
-        {
-            "image": "http://catchup.ninemsn.com.au/img/jump-in/shows/TheOriginals1280.jpg",
-            "slug": "show/theoriginals",
-            "title": "The Originals"
+            "url": "http://www.xkcd.com/443?foo=bar",
+            "latency_ms": 132
         }
     ]
 }

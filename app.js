@@ -24,18 +24,28 @@ app.use('/', routes);
  */
 app.use(function (req, res, next) {
     // return HTTP code 404 Not Found
-    res.status(404).json({error: 'Route Not Found'});
+    logger.error('Route Not Found');
+    res.status(404).json({error: constants.routeNotFoundErrorMsg});
 });
 
 /**
  * Main Error Handler
  */
 app.use(function (err, req, res, next) {
-    if (err.message.indexOf("invalid json") !== -1 || err.message.indexOf("Unexpected token") !== -1) {
-        // return expected parsing error for invalid JSON
-        res.status(400).json({error: constants.parseErrorMsg});
+    logger.debug("Main Error Handler (app.js): " + err.message);
+    if (err.message.indexOf("invalid json") !== -1 ||
+        err.message.indexOf("Unexpected token") !== -1 ||
+        err.message.indexOf(constants.parseErrorMsg) !== -1) {
+            // return expected parsing error for invalid JSON
+            logger.error('Parsing Error (400): ' + err.message);
+            res.status(400).json({error: constants.parseErrorMsg});
+    } else if (err.message.indexOf(constants.notFoundErrorMsg) !== -1) {
+        // return expected Not Found Error
+        logger.error('Not Found Error (404): ' + err.message);
+        res.status(404).json({error: constants.notFoundErrorMsg});
     } else {
-        // all other errors return HTTP code 500
+        // all other errors return HTTP code 500 with raw error message
+        logger.error('Other Error (500): ' + err.message);
         logger.error((new Date()).toUTCString() + ' Error: ', err.message);
         logger.error(err.stack);
         res.status(500).json({error: err.message});

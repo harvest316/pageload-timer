@@ -32,11 +32,17 @@ module.exports = function (grunt) { // jshint ignore:line
                     configure: './jsdoc/conf.json'
                 }
             }
+        },
+        exec: {
+            readme: {
+                command: 'readme package.json --tests --travis > README.md'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-simple-mocha');
     grunt.loadNpmTasks('grunt-jsdoc');
+    grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('default', ['simplemocha', 'jsdoc']);
 };
