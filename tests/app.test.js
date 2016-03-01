@@ -1,8 +1,7 @@
 /*jslint node: true */
 'use strict';
 var logger = require('../utils/logger');
-var serverURL = 'http://localhost:' + (process.env.PORT || 80);
-//var serverURL = 'http://pageload-timer.herokuapp.com:' + (process.env.PORT || 80);
+var serverURL = process.env.SERVER + (process.env.PORT || 80);
 var app = require('../app');
 var request = require('superagent');
 var response = require('../lib/response');

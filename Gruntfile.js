@@ -6,10 +6,12 @@ module.exports = function (grunt) { // jshint ignore:line
         env: {
             dev: {
                 NODE_ENV: 'development',
+                SERVER: 'http://localhost:',
                 PORT: 80
             },
             build: {
                 NODE_ENV: 'production',
+                SERVER: 'http://pageload-timer.herokuapp.com:',
                 PORT: 80
             }
         },
