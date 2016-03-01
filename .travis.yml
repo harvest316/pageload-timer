@@ -4,7 +4,6 @@ node_js:
 env:
   global:
   - PORT = 80
-  - SERVER = "http://localhost:"
   - NODE_ENV = production
 deploy:
   provider: heroku
