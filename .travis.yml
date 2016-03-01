@@ -3,6 +3,6 @@ node_js:
   - "4.1"
 env:
   global:
-    - PORT = 5000
+    - PORT = 80
     - SERVER = http://pageload-timer.herokuapp.com:
     - NODE_ENV = production
