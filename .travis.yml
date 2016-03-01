@@ -4,5 +4,5 @@ node_js:
 env:
   global:
     - PORT = 80
-    - SERVER = http://pageload-timer.herokuapp.com:
+    - SERVER = "http://pageload-timer.herokuapp.com:"
     - NODE_ENV = production
