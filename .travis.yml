@@ -9,4 +9,8 @@ env:
 deploy:
   provider: heroku
   api_key:
+<<<<<<< HEAD
     secure: "104e4277-f6a8-46ff-bbd2-ea861890c780"
+=======
+    secure: "104e4277-f6a8-46ff-bbd2-ea861890c780"
+>>>>>>> d7c2bbcbb5aed0134515a0cc7fc2b5366a4068d8
