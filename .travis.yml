@@ -1,16 +1,15 @@
 language: node_js
 node_js:
-  - "4.3.1"
+- 4.3.1
 env:
   global:
-    - PORT = 80
-    - SERVER = "http://localhost:"
-    - NODE_ENV = production
+  - PORT = 80
+  - SERVER = "http://localhost:"
+  - NODE_ENV = production
 deploy:
   provider: heroku
   api_key:
-<<<<<<< HEAD
-    secure: "104e4277-f6a8-46ff-bbd2-ea861890c780"
-=======
-    secure: "104e4277-f6a8-46ff-bbd2-ea861890c780"
->>>>>>> d7c2bbcbb5aed0134515a0cc7fc2b5366a4068d8
+    secure: jV/Zppi5FpNlqUMaEcKXtULLXSOtjj9SE5rTyN6DOQPslBkLX5InyV/wsRSlaBhq++1Yyw0Hwlce4APbyaD+b2dProI3XDzg5KgijJdInjWMeD1XgTN0X9vBNV8SlZV2eEKhoGNVu4IxV4rzkWMcoUrjhc50x9lp0sqUIBxkI1rkEeQa9GmMpDYSm0Acy/vc+lmjT1x/SqEEKW2WuSBYqKmnX3IC2OtSmPjhjoHjnL30lBParswrmPLuCfSfYBrOm15FsEEaofGs4+b6c7zlacAm3p1JQknBj9KUq6kDG0dnzKCPnK/5/LF+ty6ztrTIYwm2osx2PxlwwNr1e72ZadsDdfK6WzC4AlmJEVjIgrrDNs+WS/0Zo1LRm0waB74oBrD6fTOykSykBQeNTv1kgrGF6cgYq7wN8OZsFK5GsrNmLgYgpHHp5qkMBUdSFZ9SjGbTOdDx5Lr/n2qtMwZe7sknMMxGytTYHDZvwX45A/atOxLIzT+uX7t2YyzwU1PpQ+xDn/5OvuWr36vslztJ9o4eX24OUFBVK8vji4IObBUT6F7h18B6F+j1CnbVw1Na2gF0bkbXPSWIJKW1yBxgerMRLxmnmxqOQgRKvGVTt20f70XHEz70KOJKZWSaivmnwxjyErQorEiChluPIcOIqRG6RAHpMcGKI6/emrw3riw=
+  app: pageload-timer
+  on:
+    repo: harvest316/pageload-timer
