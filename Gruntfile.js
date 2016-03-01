@@ -12,7 +12,7 @@ module.exports = function (grunt) { // jshint ignore:line
             build: {
                 NODE_ENV: 'production',
                 SERVER: 'http://pageload-timer.herokuapp.com:',
-                PORT: 80
+                PORT: 5000
             }
         },
         simplemocha: {
