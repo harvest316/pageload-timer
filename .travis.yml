@@ -6,3 +6,7 @@ env:
     - PORT = 80
     - SERVER = "http://pageload-timer.herokuapp.com:"
     - NODE_ENV = production
+deploy:
+  provider: heroku
+  api_key:
+    secure: "104e4277-f6a8-46ff-bbd2-ea861890c780"
