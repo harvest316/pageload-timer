@@ -39,14 +39,9 @@ app.use(function (err, req, res, next) {
             // return expected parsing error for invalid JSON
             logger.error('Parsing Error (400): ' + err.message);
             res.status(400).json({error: constants.parseErrorMsg});
-    } else if (err.message.indexOf(constants.notFoundErrorMsg) !== -1) {
-        // return expected Not Found Error
-        logger.error('Not Found Error (404): ' + err.message);
-        res.status(404).json({error: constants.notFoundErrorMsg});
     } else {
         // all other errors return HTTP code 500 with raw error message
         logger.error('Other Error (500): ' + err.message);
-        logger.error((new Date()).toUTCString() + ' Error: ', err.message);
         logger.error(err.stack);
         res.status(500).json({error: err.message});
     }
