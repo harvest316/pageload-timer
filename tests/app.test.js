@@ -12,7 +12,7 @@ var expect = chai.expect;
 chai.use(require('chai-json-schema'));
 
 var server = app.listen(process.env.PORT || 80, function () {
-    logger.debug('Express server listening on port ' + server.address().port);
+    logger.debug('Express server listening on port ' + server.address());
 });
 
 /**
@@ -22,6 +22,7 @@ describe('The Pageload Timer Web Service: ', function () {
 
     it("Should Return 4 Valid Timing Records Given Sample Request", function (done) {
         this.timeout(10000);
+        logger.debug(serverURL);
         request.post(serverURL)
             .type('application/json')
             .send(testData.sampleRequest)
