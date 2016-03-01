@@ -1,8 +1,8 @@
 /*jslint node: true */
 'use strict';
 var logger = require('../utils/logger');
-//var serverURL = 'http://localhost:' + (process.env.PORT || 80);
-var serverURL = 'http://pageload-timer.herokuapp.com:' + (process.env.PORT || 80);
+var serverURL = 'http://localhost:' + (process.env.PORT || 80);
+//var serverURL = 'http://pageload-timer.herokuapp.com:' + (process.env.PORT || 80);
 var app = require('../app');
 var request = require('superagent');
 var response = require('../lib/response');
@@ -33,11 +33,13 @@ describe('The Pageload Timer Web Service: ', function () {
                 expect(response.isValid(JSON.stringify(res.body))).to.be.true;
                 expect(res.body.response).to.have.length(4);
                 var req = JSON.parse(testData.sampleRequest);
-                expect(res.body.response[0].url).to.be.oneOf(req.payload);
-                expect(res.body.response[1].url).to.be.oneOf(req.payload);
-                expect(res.body.response[2].url).to.be.oneOf(req.payload);
-                expect(res.body.response[3].url).to.be.oneOf(req.payload);
-                //TODO Change to forEach
+                //TODO change to "oneOf" after chai-json-schema is updated
+                //TODO or change to forEach
+                //expect(res.body.response[0].url).to.contain(req.payload);
+                expect(req.payload).to.contain(res.body.response[0].url);
+                expect(req.payload).to.contain(res.body.response[1].url);
+                expect(req.payload).to.contain(res.body.response[2].url);
+                expect(req.payload).to.contain(res.body.response[3].url);
                 done();
             });
     });

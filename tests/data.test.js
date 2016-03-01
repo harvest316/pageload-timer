@@ -49,11 +49,13 @@ describe('The Test Data: ', function () {
             res = JSON.parse(testData.sampleResponse);
         expect(req.payload).to.have.length(4);
         expect(res.response).to.have.length(4);
-        expect(res.response[0].url).to.be.oneOf(req.payload);
-        expect(res.response[1].url).to.be.oneOf(req.payload);
-        expect(res.response[2].url).to.be.oneOf(req.payload);
-        expect(res.response[3].url).to.be.oneOf(req.payload);
-        //TODO Change to forEach
+        //TODO change to "oneOf" after chai-json-schema is updated
+        //TODO or change to forEach
+        //expect(res.response[0].url).to.be.oneOf(req.payload);
+        expect(req.payload).to.contain(res.response[0].url);
+        expect(req.payload).to.contain(res.response[1].url);
+        expect(req.payload).to.contain(res.response[2].url);
+        expect(req.payload).to.contain(res.response[3].url);
         done();
     });
 

@@ -33,7 +33,6 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.4",
     "pagelt": "0.0.1",
-    "superagent": "^1.7.2",
     "underscore": "^1.7.0",
     "valid-url": "^1.0.9",
     "winston": "^2.2.0",
