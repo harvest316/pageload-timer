@@ -1,7 +1,8 @@
-# pageload-timer
-[![Build Status](https://travis-ci.org/harvest316/pageload-timer.png?branch=master)](https://travis-ci.org/harvest316/pageload-timer) [![Coverage Status](https://coveralls.io/repos/github/harvest316/pageload-timer/badge.svg?branch=master)](https://coveralls.io/github/harvest316/pageload-timer?branch=master)
+Pageload-Timer
+==============
+> Downloads a given list of web pages, and returns an array of their pageload latencies in milliseconds.
 
-Downloads a given list of web pages, and returns an array of their pageload latencies in milliseconds.
+[![Build Status](https://travis-ci.org/harvest316/pageload-timer.png?branch=master)](https://travis-ci.org/harvest316/pageload-timer) [![Coverage Status](https://coveralls.io/repos/github/harvest316/pageload-timer/badge.svg?branch=master)](https://coveralls.io/github/harvest316/pageload-timer?branch=master)
 
 ## Sample Request
 ```json
