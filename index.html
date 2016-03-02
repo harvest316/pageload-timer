@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pageload-Timer by harvest316</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Pageload-Timer</h1>
+      <h2 class="project-tagline">Downloads a given list of web pages, and returns an array of their pageload latencies in milliseconds.</h2>
+      <a href="https://github.com/harvest316/pageload-timer" class="btn">View on GitHub</a>
+      <a href="https://github.com/harvest316/pageload-timer/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/harvest316/pageload-timer/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="pageload-timer" class="anchor" href="#pageload-timer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pageload-Timer</h1>
+
+<blockquote>
+<p>Downloads a given list of web pages, and returns an array of their pageload latencies in milliseconds.</p>
+</blockquote>
+
+<p><a href="https://travis-ci.org/harvest316/pageload-timer"><img src="https://travis-ci.org/harvest316/pageload-timer.png?branch=master" alt="Build Status"></a> 
+<a href="https://coveralls.io/github/harvest316/pageload-timer?branch=master"><img src="https://coveralls.io/repos/github/harvest316/pageload-timer/badge.svg?branch=master" alt="Coverage Status"></a></p>
+
+<h2>
+<a id="sample-request" class="anchor" href="#sample-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Request</h2>
+
+<div class="highlight highlight-source-json"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>payload<span class="pl-pds">"</span></span>: [
+            <span class="pl-s"><span class="pl-pds">"</span>http://www.google.com<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>https://www.facebook.com:443<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>https://twitter.com<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>http://www.xkcd.com/443?foo=bar<span class="pl-pds">"</span></span>
+    ]
+}</pre></div>
+
+<h2>
+<a id="sample-response" class="anchor" href="#sample-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Response</h2>
+
+<div class="highlight highlight-source-json"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>response<span class="pl-pds">"</span></span>: [
+        {
+            <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>http://www.google.com<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>latency_ms<span class="pl-pds">"</span></span>: <span class="pl-c1">3210</span>
+        },
+        {
+            <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>https://www.facebook.com:443<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>latency_ms<span class="pl-pds">"</span></span>: <span class="pl-c1">1232</span>
+        },
+        {
+            <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>https://twitter.com<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>latency_ms<span class="pl-pds">"</span></span>: <span class="pl-c1">315</span>
+        },
+        {
+            <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>http://www.xkcd.com/443?foo=bar<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>latency_ms<span class="pl-pds">"</span></span>: <span class="pl-c1">132</span>
+        }
+    ]
+}</pre></div>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Download node at <a href="http://nodejs.org">nodejs.org</a> and install it, if you haven't already.</p>
+
+<div class="highlight highlight-source-shell"><pre>npm install pageload-timer --save</pre></div>
+
+<h2>
+<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tests</h2>
+
+<pre><code>  The Pageload Timer Web Service: 
+    √ Should Return 4 Valid Timing Records Given Sample Request (2802ms)
+    √ Should Return Single Response Given Single Existing URL (1788ms)
+    √ Should Return 404 Not Found Given Well-Formed Non-Existing URL (387ms)
+    √ Should Return 404 Not Found Given Invalid TLD (383ms)
+    √ Should Return 400 Parse Error Given Invalid Schema
+    √ Should Return 400 Parse Error Given Invalid MIME Type
+    √ Should Return 400 Parse Error Given Non-JSON Request
+    √ Should Return 404 Not Found Given Invalid POST Path
+    √ Should Return 400 Parse Error Given Missing Request
+    √ Should Return 400 Parse Error Given Null Request
+    √ Should Return 400 Parse Error Given Empty JSON Request
+    √ Should Return 400 Parse Error Given Empty String Request
+    √ Should Return 400 Parse Error Given Empty Payload
+  The Test Data: 
+    √ sampleRequest Should Return 4 String Elements
+    √ Request.isValid Should Return True Given sampleRequest
+    √ Request.isValid Should Return False Given emptyRequest
+    √ Response.isValid Should Return True Given sampleResponse
+    √ Response.isValid Should Return False Given emptyResponse
+    √ sampleResponse Should Contain Same URLs As sampleRequest
+  19 passing (5s)
+
+</code></pre>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>
+<a href="https://github.com/caolan/async">async</a>: Higher-order functions and common patterns for asynchronous code</li>
+<li>
+<a href="https://github.com/expressjs/body-parser">body-parser</a>: Node.js body parsing middleware</li>
+<li>
+<a href="https://github.com/expressjs/express">express</a>: Fast, unopinionated, minimalist web framework</li>
+<li>
+<a href="https://github.com/zrrrzzt/pagelt">pagelt</a>: Measure time to load a page</li>
+<li>
+<a href="https://github.com/visionmedia/superagent">superagent</a>: elegant &amp; feature rich browser / node HTTP with a fluent API</li>
+<li>
+<a href="https://github.com/jashkenas/underscore">underscore</a>: JavaScript's functional programming helper library.</li>
+<li>
+<a href="https://github.com/ogt/valid-url">valid-url</a>: URI validation functions</li>
+<li>
+<a href="https://github.com/winstonjs/winston">winston</a>: A multi-transport async logging library for Node.js</li>
+<li>
+<a href="https://github.com/winstonjs/winston-daily-rotate-file">winston-daily-rotate-file</a>: A transport for winston which logs to a rotating file each day.</li>
+</ul>
+
+<h2>
+<a id="dev-dependencies" class="anchor" href="#dev-dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dev Dependencies</h2>
+
+<ul>
+<li>
+<a href="https://github.com/jshttp/accepts">accepts</a>: Higher-level content negotiation</li>
+<li>
+<a href="https://github.com/chaijs/chai">chai</a>: BDD/TDD assertion library for node.js and the browser. Test framework agnostic.</li>
+<li>
+<a href="https://github.com/Bartvds/chai-json-schema">chai-json-schema</a>: Chai plugin for JSON Schema v4</li>
+<li>
+<a href="https://github.com/visionmedia/debug">debug</a>: small debugging utility</li>
+<li>
+<a href="https://github.com/LearnBoost/expect.js">expect.js</a>: BDD style assertions for node and the browser.</li>
+<li>
+<a href="https://github.com/gruntjs/grunt">grunt</a>: The JavaScript Task Runner</li>
+<li>
+<a href="https://github.com/gruntjs/grunt-contrib-jshint">grunt-contrib-jshint</a>: Validate files with JSHint</li>
+<li>
+<a href="https://github.com/jsoverson/grunt-env">grunt-env</a>: Specify an ENV configuration for future tasks in the chain</li>
+<li>
+<a href="https://github.com/jharding/grunt-exec">grunt-exec</a>: Grunt task for executing shell commands.</li>
+<li>
+<a href="https://github.com/krampstudio/grunt-jsdoc">grunt-jsdoc</a>: Integrates jsdoc3 generation into your Grunt build</li>
+<li>
+<a href="https://github.com/yaymukund/grunt-simple-mocha">grunt-simple-mocha</a>: A simple wrapper for running tests with Mocha.</li>
+<li>
+<a href="https://github.com/jsdoc3/jsdoc">jsdoc</a>: An API documentation generator for JavaScript.</li>
+<li>
+<a href="https://github.com/mochajs/mocha">mocha</a>: simple, flexible, fun test framework</li>
+<li>
+<a href="https://github.com/visionmedia/superagent">superagent</a>: elegant &amp; feature rich browser / node HTTP with a fluent API</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT</p>
+
+<p><em>Generated by <a href="https://github.com/zeke/package-json-to-readme">package-json-to-readme</a></em></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/harvest316/pageload-timer">Pageload-Timer</a> is maintained by <a href="https://github.com/harvest316">harvest316</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
