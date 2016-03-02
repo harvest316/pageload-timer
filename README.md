@@ -41,6 +41,10 @@ Pageload-Timer
 }
 ```
 
+## Object Diagram
+![alt tag](https://cdn.rawgit.com/harvest316/pageload-timer/master/pageload-timer.svg)
+
+
 ## Installation
 
 Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
@@ -77,6 +81,9 @@ npm install pageload-timer --save
   19 passing (5s)
 
 ```
+
+## Documentation
+System Internals are documented using [JSDoc here](https://cdn.rawgit.com/harvest316/pageload-timer/master/doc/index.html).
 
 ## Dependencies
 
