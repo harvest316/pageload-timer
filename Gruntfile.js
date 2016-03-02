@@ -27,7 +27,7 @@ module.exports = function (grunt) { // jshint ignore:line
         },
         jsdoc: {
             dist: {
-                src: ['./*.js', './bin/www', './lib/*.js', './routes/*.js', './utils/*.js', './tests/*.js', './tests/data/*.js', './README.md', './coverage/lcov-report/index.html'],
+                src: ['./*.js', './bin/www', './lib/*.js', './routes/*.js', './utils/*.js', './tests/*.js', './tests/data/*.js', './README.md'],
                 jsdoc: './node_modules/.bin/jsdoc',
                 options: {
                     destination: 'doc',
@@ -47,18 +47,6 @@ module.exports = function (grunt) { // jshint ignore:line
                     mask: '*.test.js'
                 }
             }
-            //coveralls: {
-            //    src: ['tests'], // multiple folders also works
-            //    options: {
-            //        coverage: true, // this will make the grunt.event.on('coverage') event listener to be triggered
-            //        check: {
-            //            lines: 75,
-            //            statements: 75
-            //        },
-            //        root: './lib', // define where the cover task should consider the root of libraries that are covered by tests
-            //        reportFormats: ['lcov']
-            //    }
-            //}
         },
         istanbul_check_coverage: {
             default: {
@@ -78,11 +66,8 @@ module.exports = function (grunt) { // jshint ignore:line
                 // coveralls.io is down). Optional, defaults to false.
                 force: false
             },
-
-            upload: {
-                // LCOV coverage file (can be string, glob or array)
-                src: 'coverage/lcov.info',
-                options: {}
+            grunt_coveralls_real_coverage: {
+                src: 'coverage/lcov.info'
             }
         }
     });
@@ -93,14 +78,5 @@ module.exports = function (grunt) { // jshint ignore:line
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-coveralls');
 
-    //grunt.event.on('coverage', function(lcov, done){
-    //    require('coveralls').handleInput(lcov, function(err){
-    //        if (err) {
-    //            return done(err);
-    //        }
-    //        done();
-    //    });
-    //});
-
-    grunt.registerTask('default', ['simplemocha', 'jsdoc', 'mocha_istanbul', 'coveralls']);
+    grunt.registerTask('default', ['jsdoc', 'mocha_istanbul', 'coveralls']);
 };
