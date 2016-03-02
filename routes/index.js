@@ -12,11 +12,6 @@ var router = express.Router();
 router.post('/', function (req, res) {
 
     pageLoadTimer.get(req.body, function (err, pageLoadTimes) {
-        //if (err) {
-        //    logger.error('Rethrowing: ' + err);
-        //    throw new Error(err);
-        //}
-        //res.status(200).json({response: pageLoadTimes});
         if (!err) {
             res.status(200).json({response: pageLoadTimes});
         } else {
