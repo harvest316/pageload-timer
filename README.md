@@ -1,9 +1,9 @@
 Pageload-Timer
 ==============
-> A working web service template written in NodeJS with the Express.js web framework.
+> A web service template written in NodeJS with the Express.js web framework.
 > Downloads a given list of web pages, and returns an array of their pageload latencies in milliseconds.
-> Demonstrates self-documenting BDD unit tests with Mocha Chai & Expect.js.
-> Deployed on Heroku with Grunt & Travis CI.
+> Demonstrates various development best practices, including self-documenting BDD unit tests in Mocha Chai & Expect.js.
+> Continuously Deployed on Heroku ExpressJS with Grunt & Travis CI.
 
 [![Build Status](https://travis-ci.org/harvest316/pageload-timer.png?branch=master)](https://travis-ci.org/harvest316/pageload-timer) 
 [![Coverage Status](https://coveralls.io/repos/github/harvest316/pageload-timer/badge.svg?branch=master)](https://coveralls.io/github/harvest316/pageload-timer?branch=master)
